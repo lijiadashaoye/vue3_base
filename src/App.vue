@@ -18,6 +18,7 @@ function routeChange(str) {
 <template>
   <button @click="routeChange('one')">one</button>
   <button @click="routeChange('two')">two</button>
+  <el-button>I am ElButton</el-button>
   <router-view></router-view>
 </template>
 

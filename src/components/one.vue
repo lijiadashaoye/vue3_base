@@ -50,7 +50,9 @@ let child = ref("");
       <span>{{ pp.slotData.age }}</span>
     </template>
   </one-child>
-  <p>emitData：{{ getEmitData }}</p>
+  <p class="forEmit">
+    emitData：<span>{{ getEmitData }}</span>
+  </p>
   <hr />
   <button @click="changeNum">num：{{ num }}</button>
   <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
@@ -59,8 +61,13 @@ let child = ref("");
   <button @click="child.childFn">调用子组件方法</button>
 </template>
 
-<style scoped>
+<style scoped lang='scss'>
 button {
   margin-right: 10px;
+}
+.forEmit {
+  span: {
+    color: blue;
+  }
 }
 </style>

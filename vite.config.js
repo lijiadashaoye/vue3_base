@@ -2,6 +2,7 @@ import {
     defineConfig
 } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import path from 'path'
 
 export default defineConfig(() => {
     let env = process.env.NODE_ENV;
@@ -21,7 +22,7 @@ export default defineConfig(() => {
         },
         resolve: {
             alias: {
-                '@': __dirname + "/src",
+                '@/': `${path.resolve(__dirname, 'src')}/`,
             }
         }
     }
