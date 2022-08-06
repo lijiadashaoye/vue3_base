@@ -6,14 +6,9 @@ function routeChange(str) {
   if (str === "two") {
     router.push({
       name: str,
-      query: { obj1: JSON.stringify({ kk: 3 }), str: "str" },
-      params: { obj2: JSON.stringify({ kk: 4 }), num: 5 },
+      query: { obj1: JSON.stringify({ kk: 3 }), str: "str" }, // 刷新不消失
+      params: { obj2: JSON.stringify({ kk: 4 }), num: 5 }, // params 刷新后会消失
     });
-
-    // 命名的路由，并加上参数，让路由建立 url
-    // router.push({ name: str, params: { username: "eduardo" } });
-    // 带查询参数，结果是 /register?plan=private
-    // router.push({ path: `/${str}`, query: { plan: "private" } });
   } else {
     router.push({ name: str });
   }
