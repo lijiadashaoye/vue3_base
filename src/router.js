@@ -13,7 +13,12 @@ const routes = [{
         name: 'two',
         path: '/two',
         component: () =>
-            import ('@/components/two.vue')
+            import ('@/components/two.vue'),
+        // 将路由参数作为组件props
+        props: route => ({
+            query: route.query,
+            params: route.params,
+        })
     },
 ]
 

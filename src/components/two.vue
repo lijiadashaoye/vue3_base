@@ -1,13 +1,28 @@
 <template>
-  <p></p>
-  <button @click="toCommit">状态管理：{{ store.state.count }}</button>
-  <button @click="testAxios1">使用getCurrentInstance</button>
-  <button @click="testAxios2">使用 provide/inject</button>
+  <div>
+    <button @click="toCommit">状态管理：{{ store.state.count }}</button>
+    <p>axios 使用</p>
+    <button @click="testAxios1">使用getCurrentInstance</button>
+    <button @click="testAxios2">使用 provide/inject</button>
+  </div>
 </template>
 
 <script setup>
 import { getCurrentInstance, inject } from "vue";
 import { useStore } from "vuex";
+import { useRoute } from "vue-router";
+// 获取路由参数
+let { query: query1, params: params1 } = useRoute();
+console.log(query1);
+console.log(params1);
+// 将路由参数作为组件props，需要在路由配置文件里添加props配置项
+let { query: query2, params: params2 } = defineProps({
+  query: Object,
+  params: Object,
+});
+console.log(query2);
+console.log(params2);
+
 let store = useStore();
 function toCommit() {
   store.commit("increment");
@@ -34,5 +49,9 @@ function testAxios2() {
 }
 </script>
 
+
 <style scoped>
+div {
+  padding: 10px;
+}
 </style>

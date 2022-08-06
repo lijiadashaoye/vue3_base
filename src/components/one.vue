@@ -1,6 +1,7 @@
 <script setup>
-import oneChild from "./oneChild.vue";
-import { watch, ref, reactive } from "vue";
+import { watch, ref, reactive, defineAsyncComponent } from "vue";
+// 异步加载组件
+let oneChild = defineAsyncComponent(() => import("./oneChild.vue"));
 let obj = reactive({
     job: {
       one: 7,
@@ -39,7 +40,16 @@ let child = ref("");
 </script>
 
 <template>
-  <oneChild ref="child" msg="Vite + Vue" @self="childEmit" />
+  <one-child ref="child" msg="Vite + Vue" @self="childEmit">
+    <template #default>
+      <span>默认插槽写法二，也可只用#替代#default</span>
+    </template>
+    <!-- <span>默认插槽写法一</span> -->
+
+    <template #slotName="pp">
+      <span>{{ pp.slotData.age }}</span>
+    </template>
+  </one-child>
   <p>emitData：{{ getEmitData }}</p>
   <hr />
   <button @click="changeNum">num：{{ num }}</button>
