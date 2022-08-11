@@ -26,6 +26,7 @@ console.log(params2);
 let store = useStore();
 function toCommit() {
   store.commit("increment");
+  console.log(store.state.isModule); // 命名空间
 }
 // 使用自定义全局变量方式一
 let {

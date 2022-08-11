@@ -40,25 +40,27 @@ let child = ref("");
 </script>
 
 <template>
-  <one-child ref="child" msg="Vite + Vue" @self="childEmit">
-    <template #default>
-      <span>默认插槽写法二，也可只用#替代#default</span>
-    </template>
-    <!-- <span>默认插槽写法一</span> -->
+  <div>
+    <one-child ref="child" msg="Vite + Vue" @self="childEmit">
+      <template #default>
+        <span>默认插槽写法二，也可只用#替代#default</span>
+      </template>
+      <!-- <span>默认插槽写法一</span> -->
 
-    <template #slotName="pp">
-      <span>{{ pp.slotData.age }}</span>
-    </template>
-  </one-child>
-  <p class="forEmit">
-    emitData：<span>{{ getEmitData }}</span>
-  </p>
-  <hr />
-  <button @click="changeNum">num：{{ num }}</button>
-  <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
-  <hr />
-  <p>{{ child.childData }}</p>
-  <button @click="child.childFn">调用子组件方法</button>
+      <template #slotName="pp">
+        <span>{{ pp.slotData.age }}</span>
+      </template>
+    </one-child>
+    <p class="forEmit">
+      emitData：<span>{{ getEmitData }}</span>
+    </p>
+    <hr />
+    <button @click="changeNum">num：{{ num }}</button>
+    <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
+    <hr />
+    <p>{{ child.childData }}</p>
+    <button @click="child.childFn">调用子组件方法</button>
+  </div>
 </template>
 
 <style scoped lang='scss'>

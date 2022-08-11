@@ -15,12 +15,17 @@ function routeChange(str) {
 }
 </script>
 
+
 <template>
-  <button @click="routeChange('one')">one</button>
-  <button @click="routeChange('two')">two</button>
-  <el-button>I am ElButton</el-button>
-  <router-view></router-view>
+  <div>
+    <button @click="routeChange('one')">one</button>
+    <button @click="routeChange('two')">two</button>
+    <el-button>I am ElButton</el-button>
+    <Edit style="width: 1em; height: 1em; margin-right: 8px" />
+    <router-view></router-view>
+  </div>
 </template>
+
 
 <style>
 button {

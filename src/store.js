@@ -12,6 +12,11 @@ const store = createStore({
         increment(state) {
             state.count++
         }
+    },
+    modules: {
+        isModule: {
+            state: '55555'
+        }
     }
 })
 export default store
