@@ -1,5 +1,5 @@
 <script setup>
-import { watch, ref, reactive, defineAsyncComponent } from "vue";
+import { watch, ref, reactive, defineAsyncComponent, computed } from "vue";
 // 异步加载组件
 let oneChild = defineAsyncComponent(() => import("./oneChild.vue"));
 let obj = reactive({
@@ -37,6 +37,15 @@ function childEmit(val) {
 }
 // 父组件调用子组件的方法
 let child = ref("");
+let isMath = reactive({
+  one: "",
+  two: "",
+  three: computed(() => {
+    if (isMath.one !== "" && isMath.two !== "") {
+      return +isMath.one + +isMath.two;
+    }
+  }),
+});
 </script>
 
 <template>
@@ -60,6 +69,20 @@ let child = ref("");
     <hr />
     <p>{{ child.childData }}</p>
     <button @click="child.childFn">调用子组件方法</button>
+    <hr />
+    <h4>computed 使用</h4>
+    <el-input
+      style="width: 100px"
+      v-model="isMath.one"
+      placeholder="Please input"
+    />
+    +
+    <el-input
+      style="width: 100px"
+      v-model="isMath.two"
+      placeholder="Please input"
+    />
+    = {{ isMath.three }}
   </div>
 </template>
 
