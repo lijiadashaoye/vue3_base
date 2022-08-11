@@ -19,6 +19,6 @@ let app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
-app.config.globalProperties.$axios = axios; // 全局挂载写法一
-app.provide('$axios', axios) // 全局挂载写法二
+app.config.globalProperties.$axios = axios; // 全局挂载写法一，适合用在非setup里
+app.provide('$axios', axios) // 全局挂载写法二，适合用在setup里
 app.mount('#app')
