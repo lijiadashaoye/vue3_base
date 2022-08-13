@@ -12,9 +12,13 @@ let obj = reactive({
 function changeNum() {
   num.value++;
 }
-watch(num, () => {
-  console.log(num.value);
-});
+watch(
+  num,
+  () => {
+    console.log(num.value);
+  },
+  { immediate: true }
+);
 
 function changeObjOne() {
   obj.job.one++;
