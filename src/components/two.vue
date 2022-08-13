@@ -12,16 +12,20 @@ import { getCurrentInstance, inject } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 // 获取路由参数
-let { query: query1, params: params1 } = useRoute();
-console.log(query1);
-console.log(params1);
-// 将路由参数作为组件props，需要在路由配置文件里添加props配置项
-let { query: query2, params: params2 } = defineProps({
-  query: Object,
-  params: Object,
-});
-console.log(query2);
-console.log(params2);
+// let { query: query1, params: params1 } = useRoute();
+// console.log(query1);
+// console.log(params1);
+// let { query, params } = useRoute();
+// console.log(query);
+// console.log(params);
+
+// // 将路由参数作为组件props，需要在路由配置文件里添加props配置项
+// let { query: query2, params: params2 } = defineProps({
+//   query: Object,
+//   params: Object,
+// });
+// console.log(query2);
+// console.log(params2);
 
 let store = useStore();
 function toCommit() {

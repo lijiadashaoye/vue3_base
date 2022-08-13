@@ -40,11 +40,19 @@ let child = ref("");
 let isMath = reactive({
   one: "",
   two: "",
-  three: computed(() => {
-    if (isMath.one !== "" && isMath.two !== "") {
-      return +isMath.one + +isMath.two;
-    }
+  three: computed({
+    // 第一种写法：用对象
+    get() {
+      if (isMath.one !== "" && isMath.two !== "") {
+        return +isMath.one + +isMath.two;
+      }
+    },
   }),
+  // three: computed(() => {  // 第二种写法：用箭头函数
+  //   if (isMath.one !== "" && isMath.two !== "") {
+  //     return +isMath.one + +isMath.two;
+  //   }
+  // }),
 });
 </script>
 
