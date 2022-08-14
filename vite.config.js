@@ -13,10 +13,10 @@ export default defineConfig(() => {
             port: 4444,
             open: true,
             proxy: {
-                '/api': {
-                    target: 'http://jsonplaceholder.typicode.com',
+                '/sse': {
+                    target: 'http://localhost:2342',
                     changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/api/, '')
+                    // rewrite: (path) => path.replace(/^\/sse/, '')
                 },
             }
         },

@@ -26,7 +26,7 @@ function routeChange(str) {
     <!-- 路由缓存化 -->
     <router-view v-slot="{ Component }">
       <keep-alive>
-        <component :is="Component" />
+        <component :is="Component" :key="$route.name" />
       </keep-alive>
     </router-view>
   </div>

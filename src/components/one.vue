@@ -7,13 +7,13 @@ let num = ref(0);
 function changeNum() {
   num.value++;
 }
-watch(
-  num, // 指定ref()定义的值，不需要加value，但读取值时，需要加
-  () => {
-    console.log(num.value);
-  },
-  { immediate: true }
-);
+// watch(
+//   num, // 指定ref()定义的值，不需要加value，但读取值时，需要加
+//   () => {
+//     console.log(num.value);
+//   },
+//   { immediate: true }
+// );
 
 let obj = reactive({
   age: 1,

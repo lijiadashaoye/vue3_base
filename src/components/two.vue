@@ -4,11 +4,15 @@
     <p>axios 使用</p>
     <button @click="testAxios1">使用getCurrentInstance</button>
     <button @click="testAxios2">使用 provide/inject</button>
+    <hr />
+    <h3>服务器推送</h3>
+    <p>{{ sseData }}</p>
+    <button @click="useSSE">使用</button>
   </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, inject } from "vue";
+import { getCurrentInstance, inject, ref } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 // 获取路由参数
@@ -51,6 +55,14 @@ function testAxios2() {
   $axios.get(url).then((res) => {
     console.log(res);
   });
+}
+let sseData = ref("");
+function useSSE() {
+  let es = new EventSource("/sse");
+  es.onmessage = (e) => {
+    sseData.value = JSON.parse(e.data).name;
+    es.close();
+  };
 }
 </script>
 
