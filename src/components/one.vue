@@ -2,25 +2,30 @@
 import { watch, ref, reactive, defineAsyncComponent, computed } from "vue";
 // 异步加载组件
 let oneChild = defineAsyncComponent(() => import("./oneChild.vue"));
-let obj = reactive({
-    job: {
-      one: 7,
-    },
-  }),
-  num = ref(0);
+let num = ref(0);
 // watch监听
 function changeNum() {
   num.value++;
 }
 watch(
-  num,
+  num, // 指定ref()定义的值，不需要加value，但读取值时，需要加
   () => {
     console.log(num.value);
   },
   { immediate: true }
 );
 
+let obj = reactive({
+  age: 1,
+  job: {
+    one: 7,
+  },
+});
 function changeObjOne() {
+  obj.job.one++;
+}
+function changeObjOneAge() {
+  obj.age++;
   obj.job.one++;
 }
 // 只要obj里任何属性发生变化，都会执行
@@ -34,6 +39,10 @@ watch(
     console.log(obj.job.one);
   }
 );
+// 以数组形式指定监听多个属性
+watch([() => obj.age, () => obj.job.one], (t) => {
+  console.log(t);
+});
 // 监听子组件emit
 let getEmitData = ref(null);
 function childEmit(val) {
@@ -78,6 +87,9 @@ let isMath = reactive({
     <hr />
     <button @click="changeNum">num：{{ num }}</button>
     <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
+    <button @click="changeObjOneAge">
+      obj.job.one和age：{{ obj.age }}--{{ obj.job.one }}
+    </button>
     <hr />
     <p>{{ child.childData }}</p>
     <button @click="child.childFn">调用子组件方法</button>
