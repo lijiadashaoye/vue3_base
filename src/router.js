@@ -20,6 +20,13 @@ const routes = [{
             params: route.params,
         })
     },
+    {
+        name: 'three',
+        path: '/three',
+        component: () =>
+            import ('@/components/three.vue')
+    }
+
 ]
 
 const router = createRouter({

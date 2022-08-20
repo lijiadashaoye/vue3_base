@@ -1,5 +1,12 @@
 <script setup>
-import { watch, ref, reactive, defineAsyncComponent, computed } from "vue";
+import {
+  watch,
+  ref,
+  reactive,
+  defineAsyncComponent,
+  computed,
+  onMounted,
+} from "vue";
 // 异步加载组件
 let oneChild = defineAsyncComponent(() => import("./oneChild.vue"));
 let num = ref(0);
@@ -48,6 +55,11 @@ let getEmitData = ref(null);
 function childEmit(val) {
   getEmitData.value = val.emitData;
 }
+// 获取dom
+// let wap = ref(null);
+// onMounted(() => {
+//   console.log(wap.value);
+// });
 // 父组件调用子组件的方法
 let child = ref("");
 let isMath = reactive({
@@ -70,13 +82,12 @@ let isMath = reactive({
 </script>
 
 <template>
-  <div>
+  <div ref="wap">
     <one-child ref="child" msg="Vite + Vue" @self="childEmit">
       <template #default>
         <span>默认插槽写法二，也可只用#替代#default</span>
       </template>
       <!-- <span>默认插槽写法一</span> -->
-
       <template #slotName="pp">
         <span>{{ pp.slotData.age }}</span>
       </template>

@@ -23,4 +23,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.config.globalProperties.$axios = markRaw(axios); // 全局挂载写法一，适合用在非setup里
 app.provide('$axios', markRaw(axios)) // 全局挂载写法二，适合用在setup里
-app.mount('#app')
+app.mount(document.body)
