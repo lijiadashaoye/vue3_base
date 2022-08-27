@@ -24,13 +24,13 @@ function routeChange(str) {
     <el-button>I am ElButton</el-button>
     <Edit style="width: 1em; height: 1em; margin-right: 8px" />
   </div>
-  <!-- <router-view></router-view> -->
+  <router-view></router-view>
   <!-- 路由缓存化 -->
-  <router-view v-slot="{ Component }">
+  <!-- <router-view v-slot="{ Component }">
     <keep-alive>
       <component :is="Component" :key="Component" />
     </keep-alive>
-  </router-view>
+  </router-view> -->
 </template>
 
 
