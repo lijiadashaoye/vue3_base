@@ -16,22 +16,24 @@ function routeChange(str) {
 </script>
 
 
-<template>
-  <div style="height: 33px">
-    <button @click="routeChange('one')">one</button>
-    <button @click="routeChange('two')">two</button>
-    <button @click="routeChange('three')">three</button>
-    <el-button>I am ElButton</el-button>
-    <Edit style="width: 1em; height: 1em; margin-right: 8px" />
-  </div>
-  <!-- <router-view></router-view> -->
-  <!-- 路由缓存化 -->
-  <router-view v-slot="{ Component }">
+<template >
+  <div style="padding: 0 10px">
+    <div style="height: 34px; padding: 3px 0">
+      <button @click="routeChange('one')">one</button>
+      <button @click="routeChange('two')">two</button>
+      <button @click="routeChange('three')">three</button>
+      <el-button>I am ElButton</el-button>
+      <Edit style="width: 1em; height: 1em; margin-right: 8px" />
+    </div>
+    <router-view></router-view>
+    <!-- 路由缓存化 -->
+    <!-- <router-view v-slot="{ Component }">
     <keep-alive>
-      <component :is="Component" :key="Component" />
+      <component :is="Component" :key="Component"></component>
     </keep-alive>
   </router-view>
-</template>
+  --></div>
+</template> 
 
 
 <style>

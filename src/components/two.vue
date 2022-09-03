@@ -68,7 +68,4 @@ function useSSE() {
 
 
 <style scoped>
-div {
-  padding: 10px;
-}
 </style>
