@@ -1,21 +1,3 @@
-<script setup>
-import { getCurrentInstance } from "vue";
-import { useRouter } from "vue-router";
-let router = useRouter();
-function routeChange(str) {
-  if (str === "two") {
-    router.push({
-      name: str,
-      query: { obj1: JSON.stringify({ kk: 3 }), str: "str" }, // 刷新不消失
-      params: { obj2: JSON.stringify({ kk: 4 }), num: 5 }, // params 刷新后会消失
-    });
-  } else {
-    router.push({ name: str });
-  }
-}
-</script>
-
-
 <template>
   <div style="height: 33px">
     <button @click="routeChange('one')">one</button>
@@ -33,7 +15,22 @@ function routeChange(str) {
   </router-view> -->
 </template>
 
-
+<script setup>
+import { getCurrentInstance } from "vue";
+import { useRouter } from "vue-router";
+let router = useRouter();
+function routeChange(str) {
+  if (str === "two") {
+    router.push({
+      name: str,
+      query: { obj1: JSON.stringify({ kk: 3 }), str: "str" }, // 刷新不消失
+      params: { obj2: JSON.stringify({ kk: 4 }), num: 5 }, // params 刷新后会消失
+    });
+  } else {
+    router.push({ name: str });
+  }
+}
+</script>
 <style>
 button {
   margin-right: 10px;

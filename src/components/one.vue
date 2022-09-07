@@ -1,3 +1,34 @@
+<template>
+  <div ref="wap">
+    <one-child ref="child" msg="Vite + Vue" @self="childEmit">
+      <template #default>
+        <span>默认插槽写法二，也可只用#替代#default</span>
+      </template>
+      <!-- <span>默认插槽写法一</span> -->
+      <template #slotName="pp">
+        <span>{{ pp.slotData.age }}</span>
+      </template>
+    </one-child>
+    <p class="forEmit">
+      emitData：<span>{{ getEmitData }}</span>
+    </p>
+    <hr />
+    <button @click="changeNum">num：{{ num }}</button>
+    <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
+    <button @click="changeObjOneAge">
+      obj.job.one和age：{{ obj.age }}--{{ obj.job.one }}
+    </button>
+    <hr />
+    <p>{{ child.childData }}</p>
+    <button @click="child.childFn">调用子组件方法</button>
+    <hr />
+    <h4>computed 使用</h4>
+    <el-input style="width: 100px" v-model="isMath.one" placeholder="Please input" />
+    +
+    <el-input style="width: 100px" v-model="isMath.two" placeholder="Please input" />
+    = {{ isMath.three }}
+  </div>
+</template>
 <script setup>
 import {
   watch,
@@ -80,51 +111,11 @@ let isMath = reactive({
   // }),
 });
 </script>
-
-<template>
-  <div ref="wap">
-    <one-child ref="child" msg="Vite + Vue" @self="childEmit">
-      <template #default>
-        <span>默认插槽写法二，也可只用#替代#default</span>
-      </template>
-      <!-- <span>默认插槽写法一</span> -->
-      <template #slotName="pp">
-        <span>{{ pp.slotData.age }}</span>
-      </template>
-    </one-child>
-    <p class="forEmit">
-      emitData：<span>{{ getEmitData }}</span>
-    </p>
-    <hr />
-    <button @click="changeNum">num：{{ num }}</button>
-    <button @click="changeObjOne">obj.job.one：{{ obj.job.one }}</button>
-    <button @click="changeObjOneAge">
-      obj.job.one和age：{{ obj.age }}--{{ obj.job.one }}
-    </button>
-    <hr />
-    <p>{{ child.childData }}</p>
-    <button @click="child.childFn">调用子组件方法</button>
-    <hr />
-    <h4>computed 使用</h4>
-    <el-input
-      style="width: 100px"
-      v-model="isMath.one"
-      placeholder="Please input"
-    />
-    +
-    <el-input
-      style="width: 100px"
-      v-model="isMath.two"
-      placeholder="Please input"
-    />
-    = {{ isMath.three }}
-  </div>
-</template>
-
 <style scoped lang='scss'>
 button {
   margin-right: 10px;
 }
+
 .forEmit {
   span: {
     color: blue;
